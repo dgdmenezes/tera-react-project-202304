@@ -21,7 +21,7 @@ function App() {
           element={
             <img
               src="https://httpstatusdogs.com/img/404.jpg"
-              alt="404 Not Found"
+              alt="404 Not Found "
             />
           }
         />
