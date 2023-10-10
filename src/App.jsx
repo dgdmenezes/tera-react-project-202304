@@ -16,15 +16,7 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/users/:userId" element={<UserBlog />} />
         <Route path="/users/:userId/post" element={<PostForm />} />
-        <Route
-          path="*"
-          element={
-            <img
-              src="https://httpstatusdogs.com/img/404.jpg"
-              alt="404 Not Found "
-            />
-          }
-        />
+        <Route path="*" element={<h1>404 - Not Found</h1>} />
       </Routes>
     </BrowserRouter>
   );
