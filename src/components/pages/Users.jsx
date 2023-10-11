@@ -26,12 +26,14 @@ export default function Users() {
             </div>
             <div className="users__list-item-name">John Walter</div>
           </a>
+
           <a href="#" className="users__list-item">
             <div className="users__list-item-photo">
               <img src={user2} className="responsive avatar" alt="" />
             </div>
             <div className="users__list-item-name">Chris Hudson</div>
           </a>
+
           <a href="#" className="users__list-item">
             <div className="users__list-item-photo">
               <img src={user3} className="responsive avatar" alt="" />
