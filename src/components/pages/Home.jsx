@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
+import AppLoading from "../organisms/AppLoading";
+import Loading from "../atoms/Loading";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ export default function Home() {
   }, []);
 
   return isLoading ? (
-    <h1>Carregando...</h1>
+    <Loading />
   ) : (
     <div className="home center">
       <div className="home__logo">
@@ -30,14 +32,14 @@ export default function Home() {
       >
         <option value="">Selecione um usuário</option>
         {users
-          .sort((a, b) => a.fn.localeCompare(b.fn))
+          .sort((a, b) => a.fn.localeCompare(b.fn)) // ordem alfabética
           .map((user) => (
             <option value={user.id} key={user.id}>
               {user.fn} {user.ln}
             </option>
           ))}
       </select>
-      {!!currentUser && (
+      {!!currentUser && ( //condicional para aparecer o botao de navegação quando algum item for selecionado
         <button
           onClick={() => navigate(`/users/${currentUser}`)}
           className="button-primary"
