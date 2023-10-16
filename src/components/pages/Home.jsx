@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
-import AppLoading from "../organisms/AppLoading";
 import Loading from "../atoms/Loading";
 
 export default function Home() {
