@@ -214,3 +214,8 @@ label {
 .create-post__form textarea {
   height: 200px;
 }
+
+/*******************************************/
+.MuiDrawer-paper {
+  padding: 40px 20px;
+}
