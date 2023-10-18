@@ -1,12 +1,42 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Default from "../templates/Default";
+import AppLoading from "../organisms/AppLoading";
+
 import user1 from "../../images/placeholders/user-1.jpg";
 import post1 from "../../images/placeholders/post-1.jpg";
 import post2 from "../../images/placeholders/post-2.jpg";
 import post3 from "../../images/placeholders/post-3.jpg";
 
 export default function UserBlog() {
-  return (
+  const { userId } = useParams();
+
+  const [user, setUser] = React.useState({});
+  const [posts, setPosts] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  console.log("user", user);
+  console.log("post", posts);
+
+  React.useEffect(() => {
+    //promisse all cria uma array de fetchs e retoran uma array de respostas
+    Promise.all([
+      fetch(`https://63cf09718a780ae6e6710dbe.mockapi.io/users/${userId}`).then(
+        (response) => response.json()
+      ),
+      fetch(
+        `https://63cf09718a780ae6e6710dbe.mockapi.io/users/${userId}/posts`
+      ).then((response) => response.json()),
+    ]).then(([userResponse, postsResponse]) => {
+      setUser(userResponse);
+      setPosts(postsResponse);
+      setIsLoading(false);
+    });
+  }, [userId]);
+
+  return isLoading ? (
+    <AppLoading />
+  ) : (
     <Default>
       <div className="user-blog">
         <div className="user-blog__header">
