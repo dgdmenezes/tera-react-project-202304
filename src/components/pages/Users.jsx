@@ -1,8 +1,12 @@
+/* eslint jsx-a11y/anchor-is-valid:0*/
+
 import React from "react";
+
+import Default from "../templates/Default";
+
 import user1 from "../../images/placeholders/user-1.jpg";
 import user2 from "../../images/placeholders/user-2.jpg";
 import user3 from "../../images/placeholders/user-3.jpg";
-import Default from "../templates/Default";
 
 export default function Users() {
   return (
