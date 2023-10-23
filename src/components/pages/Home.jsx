@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Loading from "../atoms/Loading";
 
-export default function Home() {
+export default function Home(props) {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrenUser] = useState("");
   const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +25,8 @@ export default function Home() {
         <img src={logo} className="responsive" alt="" />
       </div>
       <select
-        onChange={(event) => setCurrenUser(event.target.value)}
+        defaultValue={props.currentUser}
+        onChange={(event) => props.setCurrenUser(event.target.value)}
         className="home__select-users"
       >
         <option value="">Selecione um usuário</option>
@@ -38,9 +38,9 @@ export default function Home() {
             </option>
           ))}
       </select>
-      {!!currentUser && ( //condicional para aparecer o botao de navegação quando algum item for selecionado
+      {!!props.currentUser && ( //condicional para aparecer o botao de navegação quando algum item for selecionado
         <button
-          onClick={() => navigate(`/users/${currentUser}`)}
+          onClick={() => navigate(`/users/${props.currentUser}`)}
           className="button-primary"
         >
           Entrar
