@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Loading from "../atoms/Loading";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
-export default function Home(props) {
+export default function Home() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+  const { currentUser, setCurrenUser } = React.useContext(GlobalContext);
 
   useEffect(() => {
     fetch("https://63cf09718a780ae6e6710dbe.mockapi.io/users/")
@@ -25,8 +27,8 @@ export default function Home(props) {
         <img src={logo} className="responsive" alt="" />
       </div>
       <select
-        defaultValue={props.currentUser}
-        onChange={(event) => props.setCurrenUser(event.target.value)}
+        defaultValue={currentUser}
+        onChange={(event) => setCurrenUser(event.target.value)}
         className="home__select-users"
       >
         <option value="">Selecione um usuário</option>
@@ -38,9 +40,9 @@ export default function Home(props) {
             </option>
           ))}
       </select>
-      {!!props.currentUser && ( //condicional para aparecer o botao de navegação quando algum item for selecionado
+      {!!currentUser && ( //condicional para aparecer o botao de navegação quando algum item for selecionado
         <button
-          onClick={() => navigate(`/users/${props.currentUser}`)}
+          onClick={() => navigate(`/users/${currentUser}`)}
           className="button-primary"
         >
           Entrar
